@@ -56,3 +56,26 @@ This plugin provides a simple jquery timer using bootstrap 4 progress bar
     completeStyle: 'bg-success' //bootstrap progress bar style at completion of timer
 }
 ```
+
+## Functions
+
+```
+.start()             // starts the countdown timer
+.stop()              // stops the countdown timer, onComplete is not called
+.extendTimer(secs)   // extends the current timer by backing up by the number of seconds provided
+.addSeconds(secs)    // adds additional seconds to the original timer and restarts if startOverAfterAdding is true
+```
+
+## Callbacks
+
+```
+onComplete					// The function defined in this option is called after the timer completes.
+```
+
+## Contributing
+
+[See Contributing](https://github.com/imalliar/jquery.progressBarTimer/blob/master/CONTRIBUTING.md)
+
+## License
+
+[MIT License](https://imalliaros.mit-license.org/) © Jacob Malliaros
