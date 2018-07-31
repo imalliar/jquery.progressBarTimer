@@ -20,7 +20,10 @@
             baseStyle: '', //bootstrap progress bar style at the beginning of the timer
             warningStyle: 'bg-danger', //bootstrap progress bar style in the warning phase
             smooth: false, // should the timer be smooth or stepping
-            completeStyle: 'bg-success' //bootstrap progress bar style at completion of timer
+            completeStyle: 'bg-success', //bootstrap progress bar style at completion of timer
+            striped: false, //allow bootstrap striped progress bar 
+            animated: false, //allow bootstrap animated progress bar (striped should also be on)
+            height: 0 //height of progress bar in pixels (0 is the default height)
         };
 
     function Plugin(element, options) {
@@ -41,6 +44,11 @@
                 .attr("aria-valuenow", "0")
                 .attr("aria-valuemin", "0")
                 .attr("aria-valuemax", this.settings.timeLimit);
+            if(this.settings.animated) {
+                bar.addClass('progress-bar-striped');
+                bar.addClass('progress-bar-animated');
+            } else if(this.settings.striped) bar.addClass('progress-bar-striped');
+            if(this.settings.height) barContainer.height(this.settings.height);
 	        bar.appendTo(barContainer);
             barContainer.appendTo(this.element);
 	       
@@ -87,7 +95,7 @@
             this.remainingTicks += added;
         },
         _draw: function () {
-            var bar = $(this.element).find('.progress-bar');
+            var bar = $(this.element).find('.progress-bar');            
             var elapsedTicks = this.ticks - this.remainingTicks;
             bar.width(((elapsedTicks / this.ticks) * 100) + "%");
 
