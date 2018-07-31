@@ -137,6 +137,18 @@
           </div>
         </div>            
 
+        <h2>Events</h2>
+        <div class="row mt-3">
+            <div class="col-md-12">
+              <h6>onFinish (Auto Start)</h6>
+              <code>
+                $('...').progressBarTimer({ autoStart: true, 
+                  onFinish : function () { alert('That\'s all folks'); } 
+                });
+              </code>
+              <div id="example10"></div>              
+          </div>
+        </div>           
 
         <script>
           $('#example1').progressBarTimer({ autoStart: true });
@@ -148,10 +160,13 @@
           $('#example7').progressBarTimer({ autoStart: true, timeLimit: 30, warningThreshold: 10 });
           $('#example8').progressBarTimer({ autoStart: true, smooth: true, label: { show: true, type: 'percent' }});
           $('#example9').progressBarTimer({ autoStart: true, smooth: true, label: { show: true, type: 'seconds' }});
+          $('#example10').progressBarTimer({ autoStart: true, onFinish: function() { alert('That\'s all folks'); }});
         </script>
 
       </main>
+      
       <div class="mt-3"></div>
+
 
       <footer class="footer">
           <div class="container">
