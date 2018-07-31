@@ -23,7 +23,11 @@
             completeStyle: 'bg-success', //bootstrap progress bar style at completion of timer
             striped: false, //allow bootstrap striped progress bar 
             animated: false, //allow bootstrap animated progress bar (striped should also be on)
-            height: 0 //height of progress bar in pixels (0 is the default height)
+            height: 0, //height of progress bar in pixels (0 is the default height)
+            label : {
+                show: false, //show label inside progress bar
+                type: 'percent' //type of label. Allowable types: 'percent' => 30% , 'seconds' => 23/60
+            }
         };
 
     function Plugin(element, options) {
@@ -62,7 +66,7 @@
             }
 	        this.remainingTicks = this.ticks;
 
-	        if (this.settings.autoStart) this.start();
+	        if (this.settings.autoStart===true) this.start();
             
 			this.bindEvents();
 		},
@@ -97,7 +101,19 @@
         _draw: function () {
             var bar = $(this.element).find('.progress-bar');            
             var elapsedTicks = this.ticks - this.remainingTicks;
-            bar.width(((elapsedTicks / this.ticks) * 100) + "%");
+            var percent = ((elapsedTicks / this.ticks) * 100);
+            bar.width(percent + "%");
+            if(this.settings.label && this.settings.label.show===true) {
+                if(this.settings.label.type=='percent') {
+                    bar.html(Math.round(percent) + "%");
+                } else {
+                    if(this.settings.smooth===true) {
+                        bar.html(Math.round(elapsedTicks/50) + "/" + Math.round(this.ticks/50) );
+                    } else {
+                        bar.html(elapsedTicks + "/" + this.ticks );
+                    }
+                }
+            }
 
             if (this.remainingTicks-- === 0) {
                 this.stop();

@@ -113,8 +113,30 @@
           </div>
         </div>    
 
+        <div class="row mt-3">
+            <div class="col-md-12">
+              <h6>Labels (Auto Start, Percent)</h6>
+              <code>
+                $('...').progressBarTimer({ autoStart: true, 
+                  label : { show: true, type: 'percent' } 
+                });
+              </code>
+              <div id="example8"></div>              
+          </div>
+        </div>            
         
-        
+        <div class="row mt-3">
+            <div class="col-md-12">
+              <h6>Labels (Auto Start, seconds)</h6>
+              <code>
+                $('...').progressBarTimer({ autoStart: true, 
+                  label : { show: true, type: 'seconds' } 
+                });
+              </code>
+              <div id="example9"></div>              
+          </div>
+        </div>            
+
 
         <script>
           $('#example1').progressBarTimer({ autoStart: true });
@@ -124,6 +146,8 @@
           $('#example5').progressBarTimer({ autoStart: true, height: 30 });
           $('#example6').progressBarTimer({ autoStart: true, smooth: true });
           $('#example7').progressBarTimer({ autoStart: true, timeLimit: 30, warningThreshold: 10 });
+          $('#example8').progressBarTimer({ autoStart: true, smooth: true, label: { show: true, type: 'percent' }});
+          $('#example9').progressBarTimer({ autoStart: true, smooth: true, label: { show: true, type: 'seconds' }});
         </script>
 
       </main>
