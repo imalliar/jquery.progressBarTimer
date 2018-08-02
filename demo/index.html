@@ -150,6 +150,16 @@
           </div>
         </div>           
 
+        <h2>API</h2>
+        <div class="card" >
+          <div class="card-body">
+            <code>$('...').progressBarTimer();</code>
+            <div id="example11"></div>
+            
+            
+          </div>
+        </div>        
+
         <script>
           $('#example1').progressBarTimer({ autoStart: true });
           $('#example2').progressBarTimer({ autoStart: true, baseStyle: 'bg-info', warningStyle: 'bg-warning', completeStyle: 'bg-danger' });
@@ -161,6 +171,7 @@
           $('#example8').progressBarTimer({ autoStart: true, smooth: true, label: { show: true, type: 'percent' }});
           $('#example9').progressBarTimer({ autoStart: true, smooth: true, label: { show: true, type: 'seconds' }});
           $('#example10').progressBarTimer({ autoStart: true, onFinish: function() { alert('That\'s all folks'); }});
+          $('#example11').progressBarTimer();
         </script>
 
       </main>

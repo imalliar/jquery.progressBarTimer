@@ -15,7 +15,7 @@
         defaults = {
             timeLimit: 60, //total number of seconds
             warningThreshold: 5, //seconds remaining triggering switch to warning color
-            autoStart: true, // start the countdown automatically
+            autoStart: false, // start the countdown automatically
             onFinish: function() {}, //invoked once the timer expires
             baseStyle: '', //bootstrap progress bar style at the beginning of the timer
             warningStyle: 'bg-danger', //bootstrap progress bar style in the warning phase
