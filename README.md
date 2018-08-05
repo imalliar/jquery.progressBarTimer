@@ -40,7 +40,7 @@ This plugin provides a simple jquery timer using bootstrap 4 progress bar
     autostart: false,
     onFinish  : function () { console.log('completed') }
   }).start()
-  `
+  ```
   
   ## Default Options
 

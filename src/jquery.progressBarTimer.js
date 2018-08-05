@@ -90,7 +90,7 @@
         getElapsedTime: function () {
             return (this.ticks - this.remainingTicks) * this.timerInterval;
         },
-        getTimeRemaining: function() {
+        getRemainingTime: function() {
             return this.remainingTicks * this.timerInterval;
         },
         addSeconds: function (seconds) {
