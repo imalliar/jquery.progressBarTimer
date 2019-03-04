@@ -18,9 +18,9 @@
             autoStart: false, // start the countdown automatically
             onFinish: function() {}, //invoked once the timer expires
             baseStyle: '', //bootstrap progress bar style at the beginning of the timer
-            warningStyle: 'bg-danger', //bootstrap progress bar style in the warning phase
+            warningStyle: 'bg-warning', //bootstrap progress bar style in the warning phase
             smooth: false, // should the timer be smooth or stepping
-            completeStyle: 'bg-success', //bootstrap progress bar style at completion of timer
+            completeStyle: 'bg-danger', //bootstrap progress bar style at completion of timer
             striped: false, //allow bootstrap striped progress bar 
             animated: false, //allow bootstrap animated progress bar (striped should also be on)
             height: 0, //height of progress bar in pixels (0 is the default height)
@@ -83,20 +83,31 @@
 		start: function () {
             this.interval = setInterval(jQuery.proxy(this._draw, this), this.timerInterval);
         },
+        reset: function() {
+            clearInterval(this.interval);
+            this.remainingTicks = this.ticks;
+            this._draw();
+        },
         stop: function (callBack) {
             clearInterval(this.interval);
 		    if (callBack) { callBack(); }
 		},
         getElapsedTime: function () {
-            return (this.ticks - this.remainingTicks) * this.timerInterval;
+            return this._getSecondsFromTicks(this.ticks - this.remainingTicks);
         },
         getRemainingTime: function() {
-            return this.remainingTicks * this.timerInterval;
+            return this._getSecondsFromTicks(this.remainingTicks);
         },
         addSeconds: function (seconds) {
-            var added = this.setings.smooth ? seconds * 20 : seconds;
+            var added = _getTicksFromSeconds(seconds);
             this.ticks += added;
             this.remainingTicks += added;
+        },
+        _getTicksFromSeconds : function(secs) {
+            return this.settings.smooth ? secs * 50 : secs;
+        },
+        _getSecondsFromTicks: function(ticks) {
+            return this.settings.smooth ? ticks / 50 : ticks;
         },
         _draw: function () {
             var bar = $(this.element).find('.progress-bar');            
@@ -114,14 +125,17 @@
                     }
                 }
             }
-
-            if (this.remainingTicks-- === 0) {
+            --this.remainingTicks;
+            if(this._getSecondsFromTicks(this.remainingTicks)<=this.settings.warningThreshold && !bar.hasClass(this.settings.warningStyle)) {                
+                bar.removeClass(this.settings.baseStyle).addClass(this.settings.warningStyle);
+            }
+            if (this.remainingTicks === 0) {
                 this.stop();
 
                 bar.removeClass(this.settings.baseStyle)
                     .removeClass(this.settings.warningStyle)
                     .addClass(this.settings.completeStyle);
-
+                bar.width("100%");
                 this.settings.onFinish();
             }
         }
