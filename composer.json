@@ -1,5 +1,5 @@
 {
-    "name": "imalliar/jquery.progressBarTimer",
+    "name": "imalliar/jquery.progress-bar-timer",
     "type": "component",
     "description": "A simple countdown timer using boostrap 4 progress bar",
     "license": "MIT",
