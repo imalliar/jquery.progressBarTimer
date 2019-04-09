@@ -72,6 +72,10 @@ This plugin provides a simple jquery timer using bootstrap 4 progress bar
 onComplete					// The function defined in this option is called after the timer completes.
 ```
 
+## Demo
+[Demo Page](https://imalliar.github.io/progressBarTimer/index.html)
+
+
 ## Contributing
 
 [See Contributing](https://github.com/imalliar/jquery.progressBarTimer/blob/master/CONTRIBUTING.md)
