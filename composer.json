@@ -1,0 +1,24 @@
+{
+    "name": "components/jquery.progressBarTimer",
+    "type": "component",
+    "description": "A simple countdown timer using boostrap 4 progress bar",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Jacob Malliaros",
+        "email": "imalliar@gmail.com",
+        "url": "https://imalliar.github.io/"
+      }
+    ],    
+    "require": {
+        "components/jquery": ">=3.0.0",
+        "components/bootstrap": ">=4.1.1"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "dist/jquery.progressBarTimer.min.js"
+            ]
+        }
+    } 
+}
