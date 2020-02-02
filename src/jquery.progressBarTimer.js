@@ -129,7 +129,7 @@
             if(this._getSecondsFromTicks(this.remainingTicks)<=this.settings.warningThreshold && !bar.hasClass(this.settings.warningStyle)) {                
                 bar.removeClass(this.settings.baseStyle).addClass(this.settings.warningStyle);
             }
-            if (this.remainingTicks === 0) {
+            if (this.remainingTicks < 0) {
                 this.stop();
 
                 bar.removeClass(this.settings.baseStyle)
